@@ -70,4 +70,8 @@ public class DoctorService {
         doctorRepository.deleteById(id);
         doctorSearchRepository.deleteById(id.toString()); // Remove from Elasticsearch
     }
+
+    public List<Doctor> getDoctorByName(String name) {
+        return doctorRepository.findByNameContainingIgnoreCase(name);
+    }
 }

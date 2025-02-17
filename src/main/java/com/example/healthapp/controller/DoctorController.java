@@ -33,6 +33,10 @@ public class DoctorController {
     }
     // Search doctors by name (using the Doctor entity)
 
+    @GetMapping("doctor-name/{name}")
+    public List<Doctor> getDoctorByName(@PathVariable String name) {
+        return doctorService.getDoctorByName(name);
+    }
 
 
 
