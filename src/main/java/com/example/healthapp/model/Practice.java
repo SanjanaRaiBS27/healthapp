@@ -1,9 +1,13 @@
 package com.example.healthapp.model;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Data;
 import org.springframework.data.elasticsearch.annotations.Document;
 
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -19,6 +23,7 @@ public class Practice {
     private String city;
     private String state;
 
+
     @ManyToMany
     @JoinTable(
             name = "practice_specializations",
@@ -28,6 +33,7 @@ public class Practice {
     private Set<Specialization> specializations;
 
     @ManyToMany
+
     @JoinTable(
             name = "doctor_practice",
             joinColumns = @JoinColumn(name = "practice_id"),
@@ -44,6 +50,8 @@ public class Practice {
         this.address = address;
         this.city = city;
         this.state = state;
+        this.specializations = new HashSet<>(); // Initialize specializations
+        this.doctors = new HashSet<>(); // Initialize doctors
     }
 
     // Getters and Setters

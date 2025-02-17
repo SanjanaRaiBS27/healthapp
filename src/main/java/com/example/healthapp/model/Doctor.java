@@ -1,5 +1,7 @@
 package com.example.healthapp.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 import org.springframework.data.elasticsearch.annotations.Document;
@@ -21,6 +23,7 @@ public class Doctor {
     @Column(unique = true)
 
     @ManyToMany(mappedBy = "doctors")
+    @JsonIgnore
     private Set<Practice> practices;
 
     @ManyToMany
@@ -29,6 +32,7 @@ public class Doctor {
             joinColumns = @JoinColumn(name = "doctor_id"),
             inverseJoinColumns = @JoinColumn(name = "specialization_id")
     )
+
     private Set<Specialization> specializations;
 
     // Default constructor

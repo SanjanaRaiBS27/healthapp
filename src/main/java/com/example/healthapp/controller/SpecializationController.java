@@ -12,6 +12,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/specializations")
+@CrossOrigin(origins = "http://localhost:3000")
 public class SpecializationController {
 
     @Autowired

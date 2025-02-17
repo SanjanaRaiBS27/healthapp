@@ -1,5 +1,7 @@
 package com.example.healthapp.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Data;
 import org.springframework.data.elasticsearch.annotations.Document;
@@ -18,9 +20,12 @@ public class Specialization {
     private String description;
 
     @ManyToMany(mappedBy = "specializations")
+    @JsonIgnore
+
     private Set<Doctor> doctors;
 
     @ManyToMany(mappedBy = "specializations")
+    @JsonIgnore
     private Set<Practice> practices;
 
     // Default constructor

@@ -12,6 +12,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/practices")
+@CrossOrigin(origins = "http://localhost:3000")
 public class PracticeController {
 
     @Autowired
@@ -52,4 +53,3 @@ public class PracticeController {
 
 
 }
-
